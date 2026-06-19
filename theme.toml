@@ -1,6 +1,6 @@
 name = "Devlix"
 license = "MIT"
-description = "A simple, hand-built Hugo theme."
+description = "A small, minimal Hugo theme."
 min_version = "0.116.0"
 
 [author]

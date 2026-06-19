@@ -8,7 +8,7 @@ uglyURLs = true
   section = ['html', 'rss']
 
 [params]
-  description = 'A simple, hand-built Hugo theme.'
+  description = 'A small, minimal Hugo theme.'
   footerText = '<a href="https://github.com/mhd64real/hugo-theme-devlix">Devlix on GitHub</a>'
   postsPerPage = 18
   readingSpeed = 200
@@ -20,9 +20,6 @@ uglyURLs = true
     photo = '/img/avatar.svg'
     roles = ['A Hugo theme', 'Minimal by design']
 
-    [[params.profile.links]]
-      text = 'hello@example.com'
-      url = 'mailto:hello@example.com'
     [[params.profile.links]]
       text = 'github/hugo-theme-devlix'
       url = 'https://github.com/mhd64real/hugo-theme-devlix'

@@ -1,6 +1,6 @@
 # Devlix
 
-A small, hand-built [Hugo](https://gohugo.io) theme for a personal site with a blog. Plain HTML, one CSS file, one tiny JS file, CSS-only dark mode, strong SEO defaults. The site works fully without JavaScript.
+A small [Hugo](https://gohugo.io) theme for a personal site with a blog. Plain HTML, one CSS file, one tiny JS file, CSS-only dark mode, strong SEO defaults. The site works fully without JavaScript.
 
 **Live demo and full docs: [demo.devlix.org](https://demo.devlix.org)**
 
