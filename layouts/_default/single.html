@@ -1,0 +1,13 @@
+{{ partial "header.html" . }}
+
+{{ partial "profile-card.html" . }}
+
+{{ partial "nav.html" . }}
+
+<h2>{{ .Title }}</h2>
+
+<div class="post-content">
+  {{ .Content }}
+</div>
+
+{{ partial "footer.html" . }}

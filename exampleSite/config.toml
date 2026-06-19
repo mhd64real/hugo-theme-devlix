@@ -1,0 +1,38 @@
+baseURL = 'https://example.com/'
+title = 'Devlix'
+theme = 'devlix'
+uglyURLs = true
+
+[params]
+  description = 'A simple, hand-built Hugo theme.'
+  postsPerPage = 18   # blog cards per page (theme default is 18)
+  readingSpeed = 200  # words-per-minute for post reading-time (theme default is 200)
+  asciiArtSize = "0.6rem"  # font size of the ASCII art header on post pages
+
+  # Home page profile card. Omit any field and it is simply not rendered.
+  [params.profile]
+    name = 'Your Name'
+    photo = '/img/headshot.jpg'   # local file in your site's static/, or a full https URL
+    roles = ['Your role', 'Your team', 'Your organization']
+    email = 'you@example.com'     # rendered scrape-resistant; reassembled by JS into a mailto:
+
+    [[params.profile.links]]
+      text = 'github/handle'
+      url = 'https://github.com/handle'
+
+[menu]
+  [[menu.main]]
+    name = 'Home'
+    url = '/index.html'
+    weight = 10
+  [[menu.main]]
+    name = 'Blog'
+    url = '/blog.html'
+    weight = 20
+
+[markup]
+  [markup.highlight]
+    style = 'monokai'
+    noClasses = true
+  [markup.goldmark.renderer]
+    unsafe = true

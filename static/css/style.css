@@ -1,0 +1,333 @@
+/* Devlix theme styles. */
+
+:root {
+  --bg: #ffffff;
+  --fg: #1a1a1a;
+  --muted: #666;
+  --link: #0645ad;
+  --border: #ddd;        /* separators (footer, pager, hr) and box borders (cards, images) */
+  --quote-bg: #dddddd;
+  --quote-fg: navy;
+  --hover-bg: #ededed;
+}
+
+/* Dark mode: follows the visitor's OS / browser setting. No JS, no toggle. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0d0d0d;
+    --fg: #d6d6d6;
+    --muted: #8a8a8a;
+    --link: #6cb6ff;
+    --border: #2a2a2a;
+    --quote-bg: #1a1a1a;
+    --quote-fg: #9ecbff;
+    --hover-bg: #262626;
+  }
+}
+
+html {
+  background: var(--bg);
+}
+
+body {
+  margin: 2rem 30%;
+  font-family: Helvetica, sans-serif;
+  color: var(--fg);
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+}
+
+/* ---- Headings (h2 is the largest; the site never uses h1) ---- */
+h1, h2 { font-size: 1.5rem; }
+h3 { font-size: 1.2rem; }
+h4 { font-size: 1.05rem; }
+h5, h6 { font-size: 1rem; }
+
+/* ---- Links ---- */
+a {
+  text-decoration: none;
+  color: var(--link);
+}
+
+.nav-links a.active {
+  text-decoration: underline;
+}
+
+/* ---- Old-web textured hover (nav + post pager) ---- */
+.nav-links a:hover,
+.post-pager a:hover {
+  background-color: var(--hover-bg);
+}
+
+/* ---- Blockquote (copied from austinhenley.com/modesty.css) ---- */
+blockquote {
+  color: var(--quote-fg);
+  text-align: center;
+  font-style: italic;
+  background: var(--quote-bg);
+  border-radius: 8px;
+  margin: auto;
+  margin-top: 1.4em;
+  margin-bottom: 1.4em;
+  padding: 0.6em 8px;
+  width: 80%;
+}
+
+blockquote p {
+  display: inline;
+}
+
+/* ---- Code blocks ---- */
+.highlight pre {
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+/* ---- RSS link at the right of the blog title (floated, so the h2 keeps
+   its normal block flow / margins, matching other pages) ---- */
+.rss-link {
+  float: right;
+}
+
+.rss-icon {
+  width: 18px;
+  height: auto;
+  margin-top: 0.2em;
+}
+
+/* ---- Terminal box + blinking cursor (shortcode + blog empty/end states) ---- */
+.term-block {
+  text-align: center;
+  margin: 3rem 0;
+  color: var(--muted);
+}
+
+.term {
+  display: inline-block;
+  text-align: left;
+  font-family: monospace;
+  font-size: 0.95rem;
+  margin: 0 auto 1rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.cursor {
+  animation: blink 1.1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* ---- Blog card grid (SK2-style) ---- */
+.post-grid {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 0;
+}
+
+.post-card {
+  border: 1px solid var(--border);
+  padding: 10px;
+  margin: 5px;
+  width: 220px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.post-card h3 {
+  margin: 0.4rem 0 0;
+  font-size: 1rem;
+}
+
+.post-card-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.post-card-date {
+  text-align: right;
+  font-size: 0.8em;
+  margin-top: auto;
+}
+
+/* ---- Pagination ---- */
+.pagination {
+  padding-left: 0;
+}
+
+.pagination li {
+  list-style-type: none;
+  display: inline-block;
+  margin-left: 5px;
+}
+
+/* ---- Header card layout ---- */
+.row {
+  display: flex;
+  align-items: stretch;
+  gap: 1rem;
+  margin: 0 10% 2rem;
+}
+
+.photo-container {
+  flex: 0 0 auto;
+}
+
+.headshot {
+  width: 150px;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  display: block;
+  border-radius: 20px;
+}
+
+.text-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.name-header {
+  margin-top: 0;
+}
+
+/* ---- Centered nav ---- */
+.nav-links {
+  text-align: center;
+}
+
+/* ---- Global footer ---- */
+.site-footer {
+  margin-top: 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+/* Space below the last page element compensates for the footer's removed top margin. */
+main.content {
+  margin-bottom: 1rem;
+}
+
+.site-footer p {
+  margin: 0.25rem 0;
+}
+
+/* ---- Single post ---- */
+.post-header h2 {
+  margin-bottom: 0.15rem;
+}
+
+.post-meta {
+  margin-top: 0;
+  font-size: 0.85rem;
+}
+
+.post-image {
+  display: block;
+  max-width: 100%;
+  max-height: 350px;
+  height: auto;
+  border: 1px solid var(--border);
+  margin: 0 auto 1.5rem;
+}
+
+/* ---- Prev / next post pager ---- */
+.post-pager {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.post-pager a {
+  display: flex;
+  flex-direction: column;
+}
+
+.pager-prev a {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.pager-next a {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.pager-arrow {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+/* Any image inside markdown content: never crop, fit, capped, centered. */
+.post-content img,
+.intro img {
+  display: block;
+  max-width: 100%;
+  max-height: 350px;
+  width: auto;
+  height: auto;
+  margin: 1.5rem auto;
+  border: 1px solid var(--border);
+}
+
+/* Figure shortcode: centered image + caption. */
+figure {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.post-figure img {
+  margin: 0 auto 0.4rem;
+}
+
+figcaption {
+  text-align: center;
+}
+
+/* ---- Nested-page header (row: ASCII art + roles | links) ---- */
+.nested-row {
+  display: flex;
+  align-items: center;     /* vertical centering of both columns */
+  justify-content: center; /* keep the two columns together, centered */
+  gap: 3rem;
+  margin: 0 10% 2rem;
+}
+
+.ascii-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;            /* center art + roles horizontally */
+  text-align: center;
+}
+
+.nested-row .links {
+  text-align: center;             /* center the links */
+}
+
+.ascii-art {
+  font-family: monospace;
+  line-height: 1.1;
+  margin: 0;
+  white-space: pre;
+  text-align: center;
+  /* font-size is set inline from the asciiArtSize theme param */
+}
+
+.ascii-roles {
+  margin: 0.5rem 0 0;
+}

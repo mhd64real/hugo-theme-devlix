@@ -1,0 +1,49 @@
+{{ partial "header.html" . }}
+
+{{ partial "profile-card-nested.html" . }}
+
+{{ partial "nav.html" . }}
+
+<article class="post">
+  <header class="post-header">
+    <h2>{{ .Title }}</h2>
+    <p class="post-meta">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02/01/2006" }}</time>
+      {{ $wpm := int (default 200 .Site.Params.readingSpeed) }}
+      {{ $mins := int (math.Ceil (div (float .WordCount) $wpm)) }}
+      {{ if lt $mins 1 }}{{ $mins = 1 }}{{ end }}
+      &middot; {{ $mins }} min read
+    </p>
+  </header>
+
+  {{ with .Params.image }}
+  <img class="post-image" src="{{ if hasPrefix . "http" }}{{ . }}{{ else }}{{ . | relURL }}{{ end }}" alt="{{ $.Title }}">
+  {{ end }}
+
+  <div class="post-content">
+    {{ .Content }}
+  </div>
+</article>
+
+{{ $posts := (where .Site.RegularPages "Section" "blog").ByDate.Reverse }}
+{{ $curURL := .RelPermalink }}
+{{ $newer := false }}
+{{ $older := false }}
+{{ range $i, $p := $posts }}
+  {{ if eq $p.RelPermalink $curURL }}
+    {{ if gt $i 0 }}{{ $newer = index $posts (sub $i 1) }}{{ end }}
+    {{ if lt $i (sub (len $posts) 1) }}{{ $older = index $posts (add $i 1) }}{{ end }}
+  {{ end }}
+{{ end }}
+{{ if or $older $newer }}
+<nav class="post-pager">
+  <div class="pager-prev">
+    {{ with $older }}<a href="{{ .RelPermalink }}"><span class="pager-arrow">&larr;</span><span class="pager-label">Previous</span></a>{{ end }}
+  </div>
+  <div class="pager-next">
+    {{ with $newer }}<a href="{{ .RelPermalink }}"><span class="pager-arrow">&rarr;</span><span class="pager-label">Next</span></a>{{ end }}
+  </div>
+</nav>
+{{ end }}
+
+{{ partial "footer.html" . }}

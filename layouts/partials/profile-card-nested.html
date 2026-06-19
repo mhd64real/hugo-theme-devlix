@@ -1,0 +1,11 @@
+{{ with .Site.Params.profile }}
+<div class="card">
+  <div class="nested-row">
+    <div class="ascii-container">
+      {{ if (os.FileExists "data/ascii.txt") }}<pre class="ascii-art" style="font-size: {{ $.Site.Params.asciiArtSize | default "0.6rem" }};">{{ os.ReadFile "data/ascii.txt" }}</pre>{{ end }}
+      {{ with .roles }}<p class="ascii-roles">{{ delimit . "<br>" | safeHTML }}</p>{{ end }}
+    </div>
+    {{ partial "profile-links.html" . }}
+  </div>
+</div>
+{{ end }}

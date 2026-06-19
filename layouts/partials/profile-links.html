@@ -1,0 +1,10 @@
+{{- /* Context: a profile map (.email, .links). Renders the contact links block. */ -}}
+{{ if or .email .links }}
+<div class="links">
+  {{ with .email }}
+    {{ $parts := split . "@" }}
+    <a class="email-link" href="#" data-user="{{ index $parts 0 }}" data-domain="{{ index $parts 1 }}"><span class="email-text">{{ index $parts 0 }} [at] {{ index $parts 1 }}</span></a><br>
+  {{ end }}
+  {{ range .links }}<a href="{{ .url }}">{{ .text }}</a><br>{{ end }}
+</div>
+{{ end }}

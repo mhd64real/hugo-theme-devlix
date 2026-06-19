@@ -1,0 +1,10 @@
+{{- /* A terminal-style box with a blinking cursor. Put your lines between the tags:
+       {{< terminal >}}
+       $ whoami
+       your name
+       {{< /terminal >}}
+*/ -}}
+<div class="term-block">
+<pre class="term">{{ trim .Inner "\n\r" }}
+$ <span class="cursor">&#9608;</span></pre>
+</div>

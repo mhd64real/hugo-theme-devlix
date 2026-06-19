@@ -1,0 +1,5 @@
+{{- $src := .Get "src" -}}
+<figure class="post-figure">
+  <img class="center" src="{{ if hasPrefix $src "http" }}{{ $src }}{{ else }}{{ $src | relURL }}{{ end }}" alt="{{ .Get "alt" }}"{{ with .Get "width" }} style="max-width:{{ . }};"{{ end }}>
+  {{- with .Get "caption" }}<figcaption><small>{{ . | safeHTML }}</small></figcaption>{{ end }}
+</figure>

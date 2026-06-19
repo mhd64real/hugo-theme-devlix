@@ -1,0 +1,12 @@
+# Default configuration for the Devlix theme.
+# Any value here is overridden by the parent site's config.
+
+[params]
+  # Number of posts shown per page on the blog list.
+  postsPerPage = 18
+
+  # Words per minute used to compute each post's reading time.
+  readingSpeed = 200
+
+  # Font size of the ASCII art header on post pages (any CSS size, e.g. "0.6rem", "10px").
+  asciiArtSize = "0.6rem"

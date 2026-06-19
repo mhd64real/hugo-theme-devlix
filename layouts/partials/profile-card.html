@@ -1,0 +1,19 @@
+{{ with .Site.Params.profile }}
+{{ $profile := . }}
+<div class="card">
+  <div class="row">
+    {{ with .photo }}
+    <div class="photo-container">
+      <img class="headshot" src="{{ if hasPrefix . "http" }}{{ . }}{{ else }}{{ . | relURL }}{{ end }}" alt="{{ $profile.name }}">
+    </div>
+    {{ end }}
+    <div class="text-container">
+      <div class="content">
+        {{ with .name }}<h2 class="name-header">{{ . }}</h2>{{ end }}
+        {{ with .roles }}<p>{{ delimit . "<br>" | safeHTML }}</p>{{ end }}
+      </div>
+      {{ partial "profile-links.html" . }}
+    </div>
+  </div>
+</div>
+{{ end }}

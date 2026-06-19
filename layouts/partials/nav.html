@@ -1,0 +1,6 @@
+<hr>
+<div class="nav-links">
+  {{ $cur := .RelPermalink | strings.TrimSuffix "index.html" | strings.TrimSuffix "/" }}
+  {{ range $i, $e := .Site.Menus.main }}{{ if $i }} | {{ end }}{{ $url := $e.URL | strings.TrimSuffix "index.html" | strings.TrimSuffix "/" }}{{ $active := or (eq $url $cur) (and (ne $url "") (hasPrefix $cur (printf "%s/" $url))) }}<a href="{{ $e.URL }}"{{ if $active }} class="active"{{ end }}>{{ $e.Name }}</a>{{ end }}
+</div>
+<hr>

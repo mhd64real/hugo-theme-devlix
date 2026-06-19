@@ -1,0 +1,19 @@
+{{ partial "header.html" . }}
+
+{{ partial "profile-card.html" . }}
+
+{{ partial "nav.html" . }}
+
+<h2>{{ .Title }}</h2>
+
+{{ .Content }}
+
+{{ with .Pages }}
+<ul class="page-list">
+  {{ range . }}
+  <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+  {{ end }}
+</ul>
+{{ end }}
+
+{{ partial "footer.html" . }}

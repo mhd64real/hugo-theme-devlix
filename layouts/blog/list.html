@@ -1,0 +1,48 @@
+{{ partial "header.html" . }}
+
+{{ partial "profile-card.html" . }}
+
+{{ partial "nav.html" . }}
+
+<h2>{{ .Title }}{{ with .OutputFormats.Get "rss" }}<a class="rss-link" href="{{ .RelPermalink }}" title="RSS feed"><img class="rss-icon" src="{{ "img/rss.svg" | relURL }}" alt="RSS feed"></a>{{ end }}</h2>
+
+{{ .Content }}
+
+{{ $pages := (where .Site.RegularPages "Section" "blog").ByDate.Reverse }}
+{{ if $pages }}
+{{ $perPage := int (default 18 .Site.Params.postsPerPage) }}
+{{ $paginator := .Paginate $pages $perPage }}
+
+{{ template "_internal/pagination.html" . }}
+
+<section class="post-grid">
+  {{ range $paginator.Pages }}
+  <div class="post-card">
+    <a href="{{ .RelPermalink }}">
+      {{ with .Params.image }}
+        <img class="post-card-img" src="{{ if hasPrefix . "http" }}{{ . }}{{ else }}{{ . | relURL }}{{ end }}" alt="">
+      {{ end }}
+      <h3>{{ .Title }}</h3>
+    </a>
+    <div class="post-card-date">{{ .Date.Format "02/01/2006" }}</div>
+  </div>
+  {{ end }}
+</section>
+
+{{ if not $paginator.HasNext }}
+<div class="term-block">
+<pre class="term">$ load --more
+no more posts
+$ <span class="cursor">&#9608;</span></pre>
+</div>
+{{ end }}
+{{ else }}
+<div class="term-block">
+<pre class="term">$ ls ./posts
+ls: no entries yet
+$ <span class="cursor">&#9608;</span></pre>
+<p>Nothing published yet, but the ink is drying.</p>
+</div>
+{{ end }}
+
+{{ partial "footer.html" . }}
