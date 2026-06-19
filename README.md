@@ -52,6 +52,7 @@ uglyURLs = true            # posts become /blog/post.html; sections stay /blog/
 
 [params]
   description  = 'A short site description.'
+  footerText   = 'Your line above the credit.'   # optional, allows HTML (e.g. links)
   postsPerPage = 18          # blog cards per page
   readingSpeed = 200         # words-per-minute for reading time
   asciiArtSize = '0.6rem'    # font size of the ASCII art on post pages
@@ -88,6 +89,7 @@ uglyURLs = true            # posts become /blog/post.html; sections stay /blog/
 
 | Setting | Default | What it does |
 |---|---|---|
+| `params.footerText` | (unset) | Custom line shown above the footer credit (HTML allowed) |
 | `params.profile.name` | (unset) | Name shown on the home card |
 | `params.profile.photo` | (unset) | Profile photo, local path or URL |
 | `params.profile.roles` | (unset) | Lines shown under the name |

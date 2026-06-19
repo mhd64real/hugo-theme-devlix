@@ -1,7 +1,8 @@
 </main>
 
 <footer class="site-footer">
-  <p>Built with <a href="https://gohugo.io/">Hugo</a> and the <a href="https://github.com/your-username/devlix">Devlix</a> theme.</p>
+  {{ with .Site.Params.footerText }}<p class="footer-custom">{{ . | safeHTML }}</p>{{ end }}
+  <p>Built with <a href="https://gohugo.io/">Hugo</a> and the <a href="https://github.com/mhd64real/hugo-theme-devlix">Devlix</a> theme.</p>
   <p>Generated on <time class="gen-time" datetime="{{ now.UTC.Format "2006-01-02T15:04:05Z07:00" }}" title="{{ now.UTC.Format "2006-01-02 15:04:05 UTC" }}">{{ now.UTC.Format "2006-01-02 15:04:05 UTC" }}</time></p>
 </footer>
 

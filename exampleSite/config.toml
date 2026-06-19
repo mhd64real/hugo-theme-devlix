@@ -5,6 +5,7 @@ uglyURLs = true
 
 [params]
   description = 'A simple, hand-built Hugo theme.'
+  footerText = 'Optional custom line above the footer credit (HTML allowed).'
   postsPerPage = 18   # blog cards per page (theme default is 18)
   readingSpeed = 200  # words-per-minute for post reading-time (theme default is 200)
   asciiArtSize = "0.6rem"  # font size of the ASCII art header on post pages
