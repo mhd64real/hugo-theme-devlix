@@ -32,7 +32,10 @@ uglyURLs = true
   name  = 'Your Name'
   photo = '/img/me.jpg'
   roles = ['What you do']
-  email = 'you@example.com'
+
+  [[params.profile.links]]
+    text = 'you@example.com'
+    url  = 'mailto:you@example.com'
 ```
 
 ```bash

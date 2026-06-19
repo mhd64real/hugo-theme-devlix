@@ -17,10 +17,12 @@ uglyURLs = true
 
   [params.profile]
     name = 'Devlix Demo'
-    photo = 'https://picsum.photos/seed/devlix-demo/300/375'
+    photo = '/img/avatar.svg'
     roles = ['A Hugo theme', 'Minimal by design']
-    email = 'hello@example.com'
 
+    [[params.profile.links]]
+      text = 'hello@example.com'
+      url = 'mailto:hello@example.com'
     [[params.profile.links]]
       text = 'github/hugo-theme-devlix'
       url = 'https://github.com/mhd64real/hugo-theme-devlix'

@@ -17,14 +17,16 @@ The home and blog pages show a profile card built from `[params.profile]`:
   name  = 'Your Name'
   photo = '/img/me.jpg'        # local path or a full https URL
   roles = ['Role one', 'Role two']
-  email = 'you@example.com'    # rendered scrape-resistant
 
+  [[params.profile.links]]
+    text = 'you@example.com'
+    url  = 'mailto:you@example.com'
   [[params.profile.links]]
     text = 'github/you'
     url  = 'https://github.com/you'
 ```
 
-Any field you leave out is simply not rendered. Add more `[[params.profile.links]]` blocks for more links.
+Add a `[[params.profile.links]]` block for each link, including email (write the `mailto:` yourself). Any field you leave out is simply not rendered.
 
 ## Theme options
 
