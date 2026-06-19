@@ -73,4 +73,4 @@ $ hugo server -D
 
 ## Small print
 
-Raw HTML works in markdown, so small print is just <small>a `&lt;small&gt;` tag</small>.
+Raw HTML works in markdown, so small print is just <small>a `<small>` tag</small>.
