@@ -1,0 +1,80 @@
+{{- /* SEO: description, canonical, robots, Open Graph, Twitter cards, JSON-LD.
+       Reads optional site params: author, defaultImage, twitter (handle, no @).
+       Posts can set front matter: description, image, lastmod. */ -}}
+
+{{- $desc := "" -}}
+{{- if .Description -}}
+  {{- $desc = .Description -}}
+{{- else if and .IsPage .Summary -}}
+  {{- $desc = .Summary -}}
+{{- else -}}
+  {{- $desc = .Site.Params.description -}}
+{{- end -}}
+{{- $desc = $desc | plainify | chomp | truncate 200 -}}
+
+{{- $img := "" -}}
+{{- with .Params.image -}}
+  {{- $img = cond (hasPrefix . "http") . (. | absURL) -}}
+{{- else -}}
+  {{- with $.Site.Params.defaultImage -}}
+    {{- $img = cond (hasPrefix . "http") . (. | absURL) -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $author := .Site.Params.author -}}
+{{- if not $author -}}{{- with .Site.Params.profile -}}{{- $author = .name -}}{{- end -}}{{- end -}}
+
+{{- $ogtitle := cond .IsHome .Site.Title .Title -}}
+
+<meta name="description" content="{{ $desc }}">
+{{ with $author }}<meta name="author" content="{{ . }}">{{ end }}
+<meta name="robots" content="{{ if .Params.private }}noindex, nofollow{{ else }}index, follow{{ end }}">
+<link rel="canonical" href="{{ .Permalink }}">
+
+<meta property="og:title" content="{{ $ogtitle }}">
+<meta property="og:description" content="{{ $desc }}">
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:site_name" content="{{ .Site.Title }}">
+<meta property="og:locale" content="{{ .Site.Language.Lang | default "en" }}">
+{{ with $img }}<meta property="og:image" content="{{ . }}">{{ end }}
+{{- if .IsPage }}
+<meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+{{ if not .Lastmod.IsZero }}<meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}">{{ end }}
+{{ with $author }}<meta property="article:author" content="{{ . }}">{{ end }}
+{{- end }}
+
+<meta name="twitter:card" content="{{ if $img }}summary_large_image{{ else }}summary{{ end }}">
+<meta name="twitter:title" content="{{ $ogtitle }}">
+<meta name="twitter:description" content="{{ $desc }}">
+{{ with $img }}<meta name="twitter:image" content="{{ . }}">{{ end }}
+{{ with .Site.Params.twitter }}<meta name="twitter:site" content="@{{ . }}">
+<meta name="twitter:creator" content="@{{ . }}">{{ end }}
+
+{{- if .IsPage }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": {{ .Title | jsonify }},
+  "description": {{ $desc | jsonify }},
+  "url": {{ .Permalink | jsonify }},
+  "mainEntityOfPage": { "@type": "WebPage", "@id": {{ .Permalink | jsonify }} },
+  "datePublished": {{ .Date.Format "2006-01-02T15:04:05Z07:00" | jsonify }},
+  "dateModified": {{ (cond .Lastmod.IsZero .Date .Lastmod).Format "2006-01-02T15:04:05Z07:00" | jsonify }}{{ with $img }},
+  "image": {{ . | jsonify }}{{ end }}{{ with $author }},
+  "author": { "@type": "Person", "name": {{ . | jsonify }} }{{ end }},
+  "publisher": { "@type": "Person", "name": {{ .Site.Title | jsonify }} }
+}
+</script>
+{{- else }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": {{ .Site.Title | jsonify }},
+  "url": {{ .Site.BaseURL | jsonify }}{{ with $author }},
+  "author": { "@type": "Person", "name": {{ . | jsonify }} }{{ end }}
+}
+</script>
+{{- end }}

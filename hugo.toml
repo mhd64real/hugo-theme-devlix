@@ -1,7 +1,16 @@
 # Default configuration for the Devlix theme.
 # Any value here is overridden by the parent site's config.
 
+enableRobotsTXT = true
+
 [params]
+  # SEO (all optional, but set them for best results):
+  #   author       = 'Your Name'      # falls back to params.profile.name
+  #   defaultImage  = '/img/og.png'   # social-share image when a page has none
+  #   twitter       = 'handle'        # Twitter/X handle without the @
+  #   favicon       = '/img/icon.png' # defaults to params.profile.photo
+  # Posts get the richest SEO when they set a front-matter `description` and `image`.
+
   # Number of posts shown per page on the blog list.
   postsPerPage = 18
 
@@ -10,3 +19,6 @@
 
   # Font size of the ASCII art header on post pages (any CSS size, e.g. "0.6rem", "10px").
   asciiArtSize = "0.6rem"
+
+  # Aspect ratio of the profile photo. "4 / 5" is the default vertical; use "1 / 1" for square.
+  photoRatio = "4 / 5"

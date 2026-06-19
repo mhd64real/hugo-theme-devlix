@@ -13,6 +13,7 @@ uglyURLs = true
   postsPerPage = 18
   readingSpeed = 200
   asciiArtSize = '0.6rem'
+  photoRatio = '4 / 5'   # profile photo aspect ratio; "1 / 1" for square
 
   [params.profile]
     name = 'Devlix Demo'

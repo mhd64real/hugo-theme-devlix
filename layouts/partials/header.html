@@ -1,17 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ .Site.Language.Lang | default "en" }}">
 <head>
 
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 	<title>{{ if not .IsHome }}{{ .LinkTitle }} - {{ end }}{{ .Site.Title }}</title>
-	{{ with .Site.Params.description }}<meta name="description" content="{{ . }}" />{{ end }}
+
+	{{ partial "seo.html" . }}
+
+	{{- $favicon := .Site.Params.favicon -}}
+	{{- if not $favicon }}{{ with .Site.Params.profile }}{{ $favicon = .photo }}{{ end }}{{ end -}}
+	{{ with $favicon }}{{ $href := cond (hasPrefix . "http") . (. | relURL) }}
+	<link rel="icon" href="{{ $href }}">
+	<link rel="apple-touch-icon" href="{{ $href }}">
+	{{ end }}
 
 	<link rel="stylesheet" href="{{ "css/style.css" | relURL }}" type="text/css" media="all" />
 
 	{{ with .OutputFormats.Get "rss" -}}
-		{{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+		{{ printf `<link rel="%s" type="%s" href="%s" title="%s feed" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
 	{{ end -}}
 
 </head>

@@ -20,7 +20,7 @@
   <div class="post-card">
     <a href="{{ .RelPermalink }}">
       {{ with .Params.image }}
-        <img class="post-card-img" src="{{ if hasPrefix . "http" }}{{ . }}{{ else }}{{ . | relURL }}{{ end }}" alt="">
+        <img class="post-card-img" src="{{ if hasPrefix . "http" }}{{ . }}{{ else }}{{ . | relURL }}{{ end }}" alt="" loading="lazy" decoding="async">
       {{ end }}
       <h3>{{ .Title }}</h3>
     </a>

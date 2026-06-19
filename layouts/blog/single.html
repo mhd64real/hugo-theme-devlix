@@ -17,7 +17,7 @@
   </header>
 
   {{ with .Params.image }}
-  <img class="post-image" src="{{ if hasPrefix . "http" }}{{ . }}{{ else }}{{ . | relURL }}{{ end }}" alt="{{ $.Title }}">
+  <img class="post-image" src="{{ if hasPrefix . "http" }}{{ . }}{{ else }}{{ . | relURL }}{{ end }}" alt="">
   {{ end }}
 
   <div class="post-content">
@@ -38,10 +38,10 @@
 {{ if or $older $newer }}
 <nav class="post-pager">
   <div class="pager-prev">
-    {{ with $older }}<a href="{{ .RelPermalink }}"><span class="pager-arrow">&larr;</span><span class="pager-label">Previous</span></a>{{ end }}
+    {{ with $older }}<a href="{{ .RelPermalink }}"><span class="pager-arrow">&larr;</span> <span class="pager-label">Previous</span></a>{{ end }}
   </div>
   <div class="pager-next">
-    {{ with $newer }}<a href="{{ .RelPermalink }}"><span class="pager-arrow">&rarr;</span><span class="pager-label">Next</span></a>{{ end }}
+    {{ with $newer }}<a href="{{ .RelPermalink }}"><span class="pager-arrow">&rarr;</span> <span class="pager-label">Next</span></a>{{ end }}
   </div>
 </nav>
 {{ end }}

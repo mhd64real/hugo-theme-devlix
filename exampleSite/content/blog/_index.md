@@ -1,6 +1,6 @@
 ---
-title: "Blog Articles"
+title: "Docs"
 linkTitle: "Blog"
 ---
 
-Sample posts that show how Devlix renders content.
+Documentation for the Devlix theme. These pages are also the demo: this is what your posts will look like.

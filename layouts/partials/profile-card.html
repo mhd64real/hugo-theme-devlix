@@ -4,7 +4,7 @@
   <div class="row">
     {{ with .photo }}
     <div class="photo-container">
-      <img class="headshot" src="{{ if hasPrefix . "http" }}{{ . }}{{ else }}{{ . | relURL }}{{ end }}" alt="{{ $profile.name }}">
+      <img class="headshot" style="{{ printf "aspect-ratio: %s;" ($.Site.Params.photoRatio | default "4 / 5") | safeCSS }}" src="{{ if hasPrefix . "http" }}{{ . }}{{ else }}{{ . | relURL }}{{ end }}" alt="">
     </div>
     {{ end }}
     <div class="text-container">

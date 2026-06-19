@@ -1,0 +1,2 @@
+{{- /* Lazy-load and async-decode content images for performance (Core Web Vitals). */ -}}
+<img src="{{ .Destination | safeURL }}" alt="{{ .Text }}"{{ with .Title }} title="{{ . }}"{{ end }} loading="lazy" decoding="async">

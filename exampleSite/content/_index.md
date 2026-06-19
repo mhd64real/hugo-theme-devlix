@@ -2,13 +2,13 @@
 title: "Home"
 ---
 
-# Welcome to Devlix
+# Devlix
 
-Devlix is a small, hand-built Hugo theme for a personal site with a blog. It is deliberately minimal: plain HTML, one CSS file, one tiny JS file, CSS-only dark mode, and a few opinionated touches.
+A small, hand-built Hugo theme for a personal site with a blog. Plain HTML, one CSS file, one tiny JS file, CSS-only dark mode. The site works fully without JavaScript.
 
-This page is the live demo. Browse the [Blog](/blog/) to see posts, cards, and code rendering.
+This page is the live demo. The docs live in the [Blog](/blog/): start with [Getting Started](/blog/getting-started.html).
 
 {{< terminal >}}
-$ hugo --theme devlix
-$ open https://demo.devlix.org
+$ git submodule add https://github.com/mhd64real/hugo-theme-devlix themes/devlix
+$ hugo server -D
 {{< /terminal >}}
