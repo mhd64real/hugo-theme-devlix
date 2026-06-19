@@ -1,5 +1,11 @@
 /* Devlix theme styles. */
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 :root {
   --bg: #ffffff;
   --fg: #1a1a1a;
@@ -331,3 +337,85 @@ figcaption {
 .ascii-roles {
   margin: 0.5rem 0 0;
 }
+
+/* ===== Overflow safety (all screens) ===== */
+/* Flex children default to min-width:auto, which refuses to shrink below their
+   content and overflows narrow screens. Let them shrink, and let long links wrap. */
+.row,
+.text-container,
+.nested-row,
+.post-pager {
+  min-width: 0;
+}
+
+.links,
+.post-content {
+  overflow-wrap: anywhere;
+}
+
+.term,
+.ascii-art {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.post-card {
+  max-width: 100%;
+}
+
+.post-content table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+}
+
+.post-content th,
+.post-content td {
+  border: 1px solid var(--border);
+  padding: 0.4rem 0.6rem;
+}
+
+/* ===== Responsive breakpoints =====
+   Desktop keeps the wide centered column; margins ease in as the screen
+   narrows, and layout pieces stack on phones. */
+@media (max-width: 1200px) {
+  body {
+    margin: 2rem 18%;
+  }
+}
+
+@media (max-width: 900px) {
+  body {
+    margin: 2rem 8%;
+  }
+  .row,
+  .nested-row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    margin: 1.25rem 1rem;
+  }
+  .row {
+    gap: 0.75rem;
+  }
+  .headshot {
+    width: 110px;
+  }
+  .nested-row {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .post-card {
+    width: 100%;
+    margin: 5px 0;
+  }
+  blockquote {
+    width: auto;
+  }
+}
+
