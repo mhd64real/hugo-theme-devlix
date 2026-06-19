@@ -4,6 +4,12 @@ A small, hand-built Hugo theme for a personal site with a blog. It is deliberate
 
 The site works fully without JavaScript. JS only enhances two details (clickable email, local-time stamp).
 
+## Demo
+
+Live demo: [demo.devlix.org](https://demo.devlix.org)
+
+![Devlix screenshot](images/screenshot.png)
+
 ## Features
 
 - Home page with a profile card (photo, name, roles, contact links)

@@ -1,25 +1,28 @@
-baseURL = 'https://example.com/'
+baseURL = 'https://demo.devlix.org/'
 title = 'Devlix'
 theme = 'devlix'
 uglyURLs = true
 
+[outputs]
+  home = ['html', 'rss']
+  section = ['html', 'rss']
+
 [params]
   description = 'A simple, hand-built Hugo theme.'
-  footerText = 'Optional custom line above the footer credit (HTML allowed).'
-  postsPerPage = 18   # blog cards per page (theme default is 18)
-  readingSpeed = 200  # words-per-minute for post reading-time (theme default is 200)
-  asciiArtSize = "0.6rem"  # font size of the ASCII art header on post pages
+  footerText = '<a href="https://github.com/mhd64real/hugo-theme-devlix">Devlix on GitHub</a>'
+  postsPerPage = 18
+  readingSpeed = 200
+  asciiArtSize = '0.6rem'
 
-  # Home page profile card. Omit any field and it is simply not rendered.
   [params.profile]
-    name = 'Your Name'
-    photo = '/img/headshot.jpg'   # local file in your site's static/, or a full https URL
-    roles = ['Your role', 'Your team', 'Your organization']
-    email = 'you@example.com'     # rendered scrape-resistant; reassembled by JS into a mailto:
+    name = 'Devlix Demo'
+    photo = 'https://picsum.photos/seed/devlix-demo/300/375'
+    roles = ['A Hugo theme', 'Minimal by design']
+    email = 'hello@example.com'
 
     [[params.profile.links]]
-      text = 'github/handle'
-      url = 'https://github.com/handle'
+      text = 'github/hugo-theme-devlix'
+      url = 'https://github.com/mhd64real/hugo-theme-devlix'
 
 [menu]
   [[menu.main]]
@@ -28,7 +31,7 @@ uglyURLs = true
     weight = 10
   [[menu.main]]
     name = 'Blog'
-    url = '/blog.html'
+    url = '/blog/'
     weight = 20
 
 [markup]
