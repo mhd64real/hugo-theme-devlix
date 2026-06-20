@@ -3,6 +3,10 @@
 
 enableRobotsTXT = true
 
+# Devlix has no taxonomy templates, so the empty tags/categories pages are off.
+# Remove this in your site config if you want to use Hugo taxonomies.
+disableKinds = ['taxonomy', 'term']
+
 [params]
   # SEO (all optional, but set them for best results):
   #   author       = 'Your Name'      # falls back to params.profile.name

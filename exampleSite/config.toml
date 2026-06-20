@@ -2,6 +2,7 @@ baseURL = 'https://demo.devlix.org/'
 title = 'Devlix'
 theme = 'devlix'
 uglyURLs = true
+disableKinds = ['taxonomy', 'term']
 
 [outputs]
   home = ['html', 'rss']
