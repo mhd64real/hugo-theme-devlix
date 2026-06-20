@@ -5,7 +5,6 @@
        {{< /terminal >}}
 */ -}}
 <div class="term-block">
-<pre class="term">{{ trim .Inner "\n\r" }}
-
+<pre class="term">{{ .Inner | strings.TrimPrefix "\n" | strings.TrimSuffix "\n" }}
 $ <span class="cursor">&#9608;</span></pre>
 </div>
