@@ -12,6 +12,7 @@ A small [Hugo](https://gohugo.io) theme for a personal site with a blog. Plain H
 - ASCII-art post header, reading time, prev/next navigation
 - CSS-only dark mode (follows the system setting)
 - `figure` and `terminal` shortcodes
+- Optional GitHub-backed guestbook/comments (Giscus), with a no-JS fallback
 - SEO out of the box: canonical, Open Graph, Twitter cards, JSON-LD, sitemap, `robots.txt`
 - Responsive, and usable in terminal browsers (Lynx)
 

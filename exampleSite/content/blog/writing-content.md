@@ -21,12 +21,14 @@ content/
 
 A post's front matter:
 
-```toml
-title = "My Post"
-date = 2026-06-19
-draft = false
-description = "Shown in search results and link previews."
-image = "/img/cover.jpg"   # optional card + cover image
+```markdown
+---
+title: "My Post"
+date: 2026-06-19
+draft: false
+description: "Shown in search results and link previews."
+image: "/img/cover.jpg"   # optional card + cover image
+---
 ```
 
 Headings note: the largest heading is `h2`. Write `#` or `##` and both render at the top size; deeper levels step down. The site never emits an `h1`.
