@@ -20,7 +20,7 @@
   <noscript>
     <p class="guestbook-fallback">This guestbook signs in through GitHub, so it needs JavaScript. Without it, you can <a href="https://github.com/{{ .repo }}/discussions">read and sign it directly on GitHub Discussions</a>.</p>
   </noscript>
-  <p class="guestbook-note">Sign-in not working? Some privacy browsers (Safari, Orion, Brave) block the cross-site cookies this needs. Allow cookies for <code>giscus.app</code>, or <a href="https://github.com/{{ .repo }}/discussions">sign it on GitHub directly</a>.</p>
+  <p class="guestbook-note">Sign-in not working? Some privacy browsers block the cross-site cookies this needs. Allow cookies for <code>giscus.app</code>, or <a href="https://github.com/{{ .repo }}/discussions">sign it on GitHub directly</a>.</p>
 </section>
 {{- else -}}
 <p class="guestbook-fallback">Guestbook is not configured yet (set <code>[params.giscus]</code> in the site config).</p>
