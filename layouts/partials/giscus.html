@@ -1,0 +1,29 @@
+{{- /* Giscus guestbook/comments widget. Configure under [params.giscus].
+       Optional giscus.discussionUrl points the fallback link at a specific
+       discussion; otherwise it links to the repo's Discussions tab. */ -}}
+{{- with .Site.Params.giscus -}}
+{{- $direct := .discussionUrl | default (printf "https://github.com/%s/discussions" .repo) -}}
+<section class="guestbook">
+  <script src="https://giscus.app/client.js"
+    data-repo="{{ .repo }}"
+    data-repo-id="{{ .repoId }}"
+    data-category="{{ .category }}"
+    data-category-id="{{ .categoryId }}"
+    data-mapping="{{ .mapping | default "pathname" }}"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="preferred_color_scheme"
+    data-lang="en"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async></script>
+  <noscript>
+    <p class="guestbook-fallback">This guestbook signs in through GitHub, so it needs JavaScript. Without it, you can <a href="{{ $direct }}">read and sign it directly on GitHub</a>.</p>
+  </noscript>
+  <p class="guestbook-note">Sign-in not working? Some privacy browsers block the cross-site cookies this needs. Allow cookies for <code>giscus.app</code>, or <a href="{{ $direct }}">sign it on GitHub directly</a>.</p>
+</section>
+{{- else -}}
+<p class="guestbook-fallback">Guestbook is not configured yet (set <code>[params.giscus]</code> in the site config).</p>
+{{- end -}}

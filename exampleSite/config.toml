@@ -24,6 +24,13 @@ uglyURLs = true
       text = 'github/hugo-theme-devlix'
       url = 'https://github.com/mhd64real/hugo-theme-devlix'
 
+  [params.giscus]
+    repo = 'mhd64real/hugo-theme-devlix'
+    repoId = 'R_kgDOS_RuiA'
+    category = 'General'
+    categoryId = 'DIC_kwDOS_RuiM4C_hf5'
+    mapping = 'pathname'
+
 [menu]
   [[menu.main]]
     name = 'Home'
@@ -33,6 +40,10 @@ uglyURLs = true
     name = 'Blog'
     url = '/blog/'
     weight = 20
+  [[menu.main]]
+    name = 'Guestbook'
+    url = '/guestbook.html'
+    weight = 30
 
 [markup]
   [markup.highlight]

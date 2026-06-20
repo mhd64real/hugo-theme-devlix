@@ -63,20 +63,28 @@ Devlix ships a `giscus` shortcode for a GitHub Discussions-backed guestbook or c
 
 ```toml
 [params.giscus]
-  repo       = 'you/your-repo'
-  repoId     = 'R_...'        # from giscus.app
-  category   = 'General'
-  categoryId = 'DIC_...'      # from giscus.app
-  mapping    = 'pathname'
+  repo          = 'you/your-repo'
+  repoId        = 'R_...'        # from giscus.app
+  category      = 'General'
+  categoryId    = 'DIC_...'      # from giscus.app
+  mapping       = 'pathname'
+  discussionUrl = ''             # optional: the fallback link's target
+                                 # (defaults to the repo's Discussions tab)
 ```
 
-Then drop the shortcode into any page (e.g. a `guestbook.md`):
+It's **opt-in**: the guestbook is just a normal content page you create, so the text is editable like any other page. Add `content/guestbook.md` with your intro and drop in the shortcode:
 
-```text
+```markdown
+---
+title: "Guestbook"
+---
+
+Leave a note.
+
 {{</* giscus */>}}
 ```
 
-It follows the visitor's light/dark setting and degrades gracefully: without JavaScript it shows a link to sign on GitHub Discussions directly.
+Add a menu entry for it if you want it in the nav. The widget follows the visitor's light/dark setting and degrades gracefully: without JavaScript (or when a privacy browser blocks its cookies) it shows a link to sign on GitHub directly.
 
 ## Menu
 
