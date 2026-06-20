@@ -30,6 +30,7 @@ uglyURLs = true
     category = 'General'
     categoryId = 'DIC_kwDOS_RuiM4C_hf5'
     mapping = 'pathname'
+    discussionUrl = 'https://github.com/mhd64real/hugo-theme-devlix/discussions/1'
 
 [menu]
   [[menu.main]]
