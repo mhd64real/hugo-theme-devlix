@@ -1,0 +1,26 @@
+{{- /* Giscus-backed guestbook/comments (GitHub Discussions).
+       Configure under [params.giscus]. Degrades gracefully without JS. */ -}}
+{{- with .Site.Params.giscus -}}
+<section class="guestbook">
+  <script src="https://giscus.app/client.js"
+    data-repo="{{ .repo }}"
+    data-repo-id="{{ .repoId }}"
+    data-category="{{ .category }}"
+    data-category-id="{{ .categoryId }}"
+    data-mapping="{{ .mapping | default "pathname" }}"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="preferred_color_scheme"
+    data-lang="en"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async></script>
+  <noscript>
+    <p class="guestbook-fallback">This guestbook signs in through GitHub, so it needs JavaScript. Without it, you can <a href="https://github.com/{{ .repo }}/discussions">read and sign it directly on GitHub Discussions</a>.</p>
+  </noscript>
+</section>
+{{- else -}}
+<p class="guestbook-fallback">Guestbook is not configured yet (set <code>[params.giscus]</code> in the site config).</p>
+{{- end -}}

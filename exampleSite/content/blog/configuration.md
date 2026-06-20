@@ -57,6 +57,27 @@ enableRobotsTXT = true
 
 Per post, set a `description` and `image` in front matter for the best previews.
 
+## Guestbook (Giscus)
+
+Devlix ships a `giscus` shortcode for a GitHub Discussions-backed guestbook or comments. Enable Discussions on a public repo, install the [giscus app](https://github.com/apps/giscus) on it, then:
+
+```toml
+[params.giscus]
+  repo       = 'you/your-repo'
+  repoId     = 'R_...'        # from giscus.app
+  category   = 'General'
+  categoryId = 'DIC_...'      # from giscus.app
+  mapping    = 'pathname'
+```
+
+Then drop the shortcode into any page (e.g. a `guestbook.md`):
+
+```text
+{{</* giscus */>}}
+```
+
+It follows the visitor's light/dark setting and degrades gracefully: without JavaScript it shows a link to sign on GitHub Discussions directly.
+
 ## Menu
 
 ```toml

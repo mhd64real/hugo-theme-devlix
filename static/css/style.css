@@ -343,6 +343,16 @@ figcaption {
   margin: 0.5rem 0 0;
 }
 
+/* ---- Guestbook (Giscus) ---- */
+.guestbook {
+  margin-top: 2rem;
+  min-height: 8rem; /* reserve space so the widget loading does not shift layout */
+}
+
+.guestbook-fallback {
+  color: var(--muted);
+}
+
 /* ===== Overflow safety (all screens) ===== */
 /* Flex children default to min-width:auto, which refuses to shrink below their
    content and overflows narrow screens. Let them shrink, and let long links wrap. */
