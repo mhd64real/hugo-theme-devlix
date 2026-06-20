@@ -57,7 +57,7 @@ Which renders:
 
 ## The terminal shortcode
 
-Drop a terminal block anywhere. Your lines become the content; a blinking prompt is added:
+Drop a terminal block anywhere. Your lines become the content, and a trailing blank line plus a blinking `$` prompt are appended automatically:
 
 ```text
 {{</* terminal */>}}
