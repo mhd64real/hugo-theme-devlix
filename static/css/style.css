@@ -353,6 +353,12 @@ figcaption {
   color: var(--muted);
 }
 
+.guestbook-note {
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
 /* ===== Overflow safety (all screens) ===== */
 /* Flex children default to min-width:auto, which refuses to shrink below their
    content and overflows narrow screens. Let them shrink, and let long links wrap. */
