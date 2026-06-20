@@ -16,6 +16,7 @@
   --quote-bg: #dddddd;
   --quote-fg: navy;
   --hover-bg: #ededed;
+  --scrollbar: #c4c4c4;
 }
 
 /* Dark mode: follows the visitor's OS / browser setting. No JS, no toggle. */
@@ -30,6 +31,7 @@
     --quote-bg: #1a1a1a;
     --quote-fg: #9ecbff;
     --hover-bg: #262626;
+    --scrollbar: #3a3a3a;
   }
 }
 
@@ -49,6 +51,30 @@ body {
 hr {
   border: none;
   border-top: 1px solid var(--border);
+}
+
+/* ---- Scrollbars (theme-colored, everywhere) ---- */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
 }
 
 /* ---- Headings (h2 is the largest; the site never uses h1) ---- */
