@@ -9,6 +9,7 @@ disableKinds = ['taxonomy', 'term']
 
 [params]
   # SEO (all optional, but set them for best results):
+  #   tagline      = 'Your Name, what you do'  # appended to the home <title>: "Site - tagline"
   #   author       = 'Your Name'      # falls back to params.profile.name
   #   defaultImage  = '/img/og.png'   # social-share image when a page has none
   #   twitter       = 'handle'        # Twitter/X handle without the @

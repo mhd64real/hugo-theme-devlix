@@ -10,6 +10,7 @@ disableKinds = ['taxonomy', 'term']
 
 [params]
   description = 'A small, minimal Hugo theme.'
+  tagline = 'a small, minimal Hugo theme'
   footerText = '<a href="https://github.com/mhd64real/hugo-theme-devlix">Devlix on GitHub</a>'
   postsPerPage = 18
   readingSpeed = 200

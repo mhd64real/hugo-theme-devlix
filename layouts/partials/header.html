@@ -5,14 +5,16 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-	<title>{{ if not .IsHome }}{{ .LinkTitle }} - {{ end }}{{ .Site.Title }}</title>
+	<title>{{ if .IsHome }}{{ .Site.Title }}{{ with .Site.Params.tagline }} - {{ . }}{{ end }}{{ else }}{{ .LinkTitle }} - {{ .Site.Title }}{{ end }}</title>
 
 	{{ partial "seo.html" . }}
 
 	{{- $favicon := .Site.Params.favicon -}}
 	{{- if not $favicon }}{{ with .Site.Params.profile }}{{ $favicon = .photo }}{{ end }}{{ end -}}
 	{{ with $favicon }}{{ $href := cond (hasPrefix . "http") . (. | relURL) }}
-	<link rel="icon" href="{{ $href }}">
+	{{- $type := "image/png" -}}
+	{{- if hasSuffix . ".svg" }}{{ $type = "image/svg+xml" }}{{ else if hasSuffix . ".ico" }}{{ $type = "image/x-icon" }}{{ else if or (hasSuffix . ".jpg") (hasSuffix . ".jpeg") }}{{ $type = "image/jpeg" }}{{ end -}}
+	<link rel="icon" type="{{ $type }}" sizes="any" href="{{ $href }}">
 	<link rel="apple-touch-icon" href="{{ $href }}">
 	{{ end }}
 
