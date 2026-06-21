@@ -49,7 +49,7 @@ enableRobotsTXT = true
 
 [params]
   description  = 'A one-line site description.'
-  tagline      = 'Your Name, what you do'  # appended to the home title: "Site - tagline"
+  tagline      = 'Your Name, what you do'  # home social/share title (og:title); the browser title stays just the site name
   author       = 'Your Name'        # falls back to profile.name
   defaultImage = '/img/og.png'      # share image when a page has none
   twitter      = 'handle'           # without the @

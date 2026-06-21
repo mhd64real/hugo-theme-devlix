@@ -27,7 +27,8 @@
 {{- $sameAs := slice -}}
 {{- with .Site.Params.profile -}}{{- range .links -}}{{- if hasPrefix .url "http" -}}{{- $sameAs = $sameAs | append .url -}}{{- end -}}{{- end -}}{{- end -}}
 
-{{- $ogtitle := cond .IsHome .Site.Title .Title -}}
+{{- $ogtitle := .Title -}}
+{{- if .IsHome -}}{{- $ogtitle = .Site.Title -}}{{- with .Site.Params.tagline -}}{{- $ogtitle = printf "%s - %s" $.Site.Title . -}}{{- end -}}{{- end -}}
 
 <meta name="description" content="{{ $desc }}">
 {{ with $author }}<meta name="author" content="{{ . }}">{{ end }}
