@@ -17,6 +17,12 @@ disableKinds = ['taxonomy', 'term']
   asciiArtSize = '0.6rem'
   photoRatio = '4 / 5'   # profile photo aspect ratio; "1 / 1" for square
 
+  # ---- Theming ----
+  colorScheme = 'auto'   # 'auto' (follow the OS, default) | 'light' | 'dark' (locked to one)
+  themeToggle = true     # show the light/dark switch (only applies when colorScheme = 'auto')
+  customCursor = true    # Plan 9 style arrow cursor; false = system cursor
+  # cursorImage = '/img/cursor.png'  # override the bundled cursor (used only when customCursor = true)
+
   [params.profile]
     name = 'Devlix Demo'
     photo = '/img/avatar.svg'

@@ -19,10 +19,14 @@
   --scrollbar: #c4c4c4;
 }
 
-/* Dark palette. Applied automatically when the OS prefers dark (no JS needed),
-   unless the visitor has forced light via the toggle. */
+/* Dark palette.
+   In "auto" mode (data-scheme="auto") it applies when the OS prefers dark
+   (no JS needed), unless the visitor forced light via the toggle.
+   It also applies when the site is locked to dark (data-scheme="dark") or the
+   toggle forced dark (data-theme="dark"). The @media block is gated to "auto"
+   so a site locked to light never goes dark on a dark-OS visitor. */
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
+  :root[data-scheme="auto"]:not([data-theme="light"]) {
     --bg: #161616;
     --page-bg: #000000;
     --fg: #d6d6d6;
@@ -36,7 +40,9 @@
   }
 }
 
-/* Manual override (JS toggle, remembered in localStorage): forces dark on any OS. */
+/* Locked dark (colorScheme = "dark"), and manual toggle to dark (remembered in
+   localStorage): force dark on any OS. */
+:root[data-scheme="dark"],
 :root[data-theme="dark"] {
   --bg: #161616;
   --page-bg: #000000;
