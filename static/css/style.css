@@ -19,9 +19,10 @@
   --scrollbar: #c4c4c4;
 }
 
-/* Dark mode: follows the visitor's OS / browser setting. No JS, no toggle. */
+/* Dark palette. Applied automatically when the OS prefers dark (no JS needed),
+   unless the visitor has forced light via the toggle. */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bg: #161616;
     --page-bg: #000000;
     --fg: #d6d6d6;
@@ -33,6 +34,20 @@
     --hover-bg: #262626;
     --scrollbar: #3a3a3a;
   }
+}
+
+/* Manual override (JS toggle, remembered in localStorage): forces dark on any OS. */
+:root[data-theme="dark"] {
+  --bg: #161616;
+  --page-bg: #000000;
+  --fg: #d6d6d6;
+  --muted: #8a8a8a;
+  --link: #6cb6ff;
+  --border: #2a2a2a;
+  --quote-bg: #1a1a1a;
+  --quote-fg: #9ecbff;
+  --hover-bg: #262626;
+  --scrollbar: #3a3a3a;
 }
 
 html {
@@ -241,6 +256,26 @@ blockquote p {
 /* ---- Centered nav ---- */
 .nav-links {
   text-align: center;
+}
+
+/* ---- Theme toggle (shown only with JS) ---- */
+.theme-toggle {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  line-height: 1;
+  padding: 0;
+  margin-left: 0.6rem;
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  color: var(--link);
+}
+
+.theme-toggle[hidden] {
+  display: none;
 }
 
 /* ---- Global footer ---- */
