@@ -15,7 +15,7 @@
   --border: #ddd;        /* separators (footer, pager, hr) and box borders (cards, images) */
   --quote-bg: #dddddd;
   --quote-fg: navy;
-  --hover-bg: #ededed;
+  --card-hover: #efefef;
   --scrollbar: #c4c4c4;
 }
 
@@ -35,7 +35,7 @@
     --border: #2a2a2a;
     --quote-bg: #1a1a1a;
     --quote-fg: #9ecbff;
-    --hover-bg: #262626;
+    --card-hover: #232323;
     --scrollbar: #3a3a3a;
   }
 }
@@ -52,7 +52,7 @@
   --border: #2a2a2a;
   --quote-bg: #1a1a1a;
   --quote-fg: #9ecbff;
-  --hover-bg: #262626;
+  --card-hover: #232323;
   --scrollbar: #3a3a3a;
 }
 
@@ -114,10 +114,20 @@ a {
   text-decoration: underline;
 }
 
-/* ---- Old-web textured hover (nav + post pager) ---- */
-.nav-links a:hover,
-.post-pager a:hover {
-  background-color: var(--hover-bg);
+/* ---- Color-invert hover (every link, site-wide and unconfigurable) ---- */
+a:hover {
+  background-color: var(--link);
+  color: var(--bg);
+}
+
+/* Post-list cards opt out of the invert; the whole card lightens on hover. */
+.post-card a:hover {
+  background-color: transparent;
+  color: var(--link);
+}
+
+.post-card:hover {
+  background-color: var(--card-hover);
 }
 
 /* ---- Blockquote (copied from austinhenley.com/modesty.css) ---- */
@@ -195,7 +205,6 @@ blockquote p {
   padding: 10px;
   margin: 5px;
   width: 220px;
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
 }
@@ -465,7 +474,7 @@ figcaption {
 }
 
 /* ===== Responsive breakpoints =====
-   Desktop keeps the wide centered column; margins ease in as the screen
+   Desktop keeps the wide centered column; margins shrink as the screen
    narrows, and layout pieces stack on phones. */
 @media (max-width: 1200px) {
   body {
