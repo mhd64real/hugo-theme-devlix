@@ -3,6 +3,11 @@
        discussion; otherwise it links to the repo's Discussions tab. */ -}}
 {{- with .Site.Params.giscus -}}
 {{- $direct := .discussionUrl | default (printf "https://github.com/%s/discussions" .repo) -}}
+{{- /* Match Giscus to the site's color scheme: locked light/dark force that
+       theme; "auto" lets Giscus follow the OS (the JS then syncs any toggle). */ -}}
+{{- $scheme := lower (site.Params.colorScheme | default "auto") -}}
+{{- if not (in (slice "auto" "light" "dark") $scheme) }}{{ $scheme = "auto" }}{{ end -}}
+{{- $gTheme := cond (eq $scheme "auto") "preferred_color_scheme" $scheme -}}
 <section class="guestbook">
   <script src="https://giscus.app/client.js"
     data-repo="{{ .repo }}"
@@ -14,7 +19,7 @@
     data-reactions-enabled="1"
     data-emit-metadata="0"
     data-input-position="top"
-    data-theme="preferred_color_scheme"
+    data-theme="{{ $gTheme }}"
     data-lang="en"
     data-loading="lazy"
     crossorigin="anonymous"
