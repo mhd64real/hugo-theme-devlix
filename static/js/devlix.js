@@ -1,9 +1,15 @@
 // Devlix theme — client-side enhancement. The site works fully without JS.
 
-// Show the build time (rendered as UTC) in the visitor's local timezone.
+// Show the build time (rendered as UTC) in the visitor's local timezone, with
+// the resolved UTC offset in parentheses. No JS leaves the UTC+0 base time.
 document.querySelectorAll(".gen-time").forEach(function (el) {
   var when = new Date(el.getAttribute("datetime"));
-  if (!isNaN(when.getTime())) el.textContent = when.toLocaleString();
+  if (isNaN(when.getTime())) return;
+  var off = -when.getTimezoneOffset();        // minutes east of UTC
+  var abs = Math.abs(off);
+  var hh = Math.floor(abs / 60), mm = abs % 60;
+  var zone = "UTC" + (off < 0 ? "-" : "+") + hh + (mm ? ":" + (mm < 10 ? "0" : "") + mm : "");
+  el.textContent = when.toLocaleString() + " (" + zone + ")";
 });
 
 (function () {
