@@ -40,6 +40,28 @@ These sit under `[params]`:
 | `photoRatio` | `4 / 5` | Profile photo aspect ratio (`1 / 1` for square) |
 | `footerText` | (none) | A custom line above the footer credit (HTML allowed) |
 
+## Light and dark
+
+Devlix follows the visitor's operating-system setting by default. Two `[params]` settings control it:
+
+| Setting | Default | What it does |
+|---|---|---|
+| `colorScheme` | `auto` | `auto` follows the OS; `light` or `dark` locks the whole site to one theme |
+| `themeToggle` | `true` | Show the light/dark switch (◐) in the nav, only applies when `colorScheme = 'auto'` |
+
+In `auto` mode a small toggle appears in the nav; the visitor's choice is remembered across visits, and with no JavaScript the site simply follows the OS. Setting `colorScheme` to `light` or `dark` removes the toggle and pins every visitor to that one theme. The optional guestbook tracks the same setting, live, when the toggle is flipped.
+
+Link hovers use a color invert, that part is built in and not configurable.
+
+## Custom cursor
+
+For an old-web feel, Devlix can swap the pointer for a Plan 9 style arrow:
+
+| Setting | Default | What it does |
+|---|---|---|
+| `customCursor` | `false` | Use the bundled arrow cursor instead of the system one |
+| `cursorImage` | `/img/cursor.png` | Override the cursor image (used only when `customCursor = true`) |
+
 ## SEO
 
 Devlix outputs canonical URLs, Open Graph, Twitter cards, JSON-LD, a sitemap, and `robots.txt` automatically. Give it the details to work with:
@@ -85,7 +107,7 @@ Leave a note.
 {{</* giscus */>}}
 ```
 
-Add a menu entry for it if you want it in the nav. The widget follows the visitor's light/dark setting and degrades gracefully: without JavaScript (or when a privacy browser blocks its cookies) it shows a link to sign on GitHub directly.
+Add a menu entry for it if you want it in the nav. The widget matches the site's theme (and follows the toggle live) and degrades gracefully: without JavaScript (or when a privacy browser blocks its cookies) it shows a link to sign on GitHub directly.
 
 ## Menu
 
